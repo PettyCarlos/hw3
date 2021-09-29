@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+
+<head>
+     <meta charset="utf-8">
+    <meta name="description" content="homework 3 Javascript CNIT133">
+    <title>CNIT 133 Homework 3 - Functions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+    
+    <style>
+        
+    
+      body {
+          background-color:cadetblue
+      }
+         #holygrail-container{display:grid; grid-template-columns: 190px 1fr 190px; background: cadetblue; height: 100%; min-width: 400px; min-height: 270px;
+         }
+        
+         header, footer {grid-column: span 4;
+                        }
+         
+         nav {display: inline; padding-bottom: 25px; display: flex; align-items: center;
+             }
+           
+            nav ul{list-style-type:none; padding:0; 
+                  }
+            
+            nav ul li{ display: inline-block;
+                       margin:0 5px;
+                       border:2px solid black;
+                      border-radius: 10px;
+                       margin-right: 350px;
+                       background-color: cadetblue;
+                       text-align:center;
+                       width: 150px;
+                       height: 30px; 
+                       line-height:30px;
+                        margin-bottom: 5px;}
+            
+            nav ul li a {text-decoration: none; font-weight: bold; color:white;
+                        }
+         
+         ul li { list-style-type: none; 
+          }
+ </style>
+         
+
+    
+ 
+     
+</head>
+
+    <body>
+        
+        
+          <header>
+  <h1 style="text-align:center">CNIT 133 Homework 3 - Functions</h1>
+            </header>
+         
+             <nav>
+    <ul>
+            <li><a href="https://pettycarlos.github.io/CNIT-133-Homework-1/">Homepage</a></li>
+             <li><a href="https://pettycarlos.github.io/hw2/">Homework 2</a></li>
+            <li><a href= "https://pettycarlos.github.io/hw3/">Homework 3</a></li>
+            <li><a href= "https://pettycarlos.github.io/CNIT-133-hw4/">Homework 4</a></li>
+            <li><a href="https://pettycarlos.github.io/hw5/">Homework 5</a></li>
+            <li><a href="https://pettycarlos.github.io/hw6/">Homework 6</a></li>
+            <li><a href= "https://pettycarlos.github.io/hw7/">Homework 7</a></li>
+            <li><a href="https://pettycarlos.github.io/hw8/">Homework 8</a></li>
+            
+        </ul>
+            </nav>
+            
+        
+         <ol>
+  <li><a href="https://pettycarlos.github.io/DocumentWritingStatement-hw2/">Part 1 - Student Grades</a></li>
+  <li><a href="https://pettycarlos.github.io/Intergers-Hw2/">Part 2 - Payments to Salespeople on a Commission Basis</a></li>
+  <li><a href="https://pettycarlos.github.io/jQuery-Hw2/#">Part 3 - Conversion from Celsius to Farenheit</a></li>
+             
+</ol>
+        <div id="extraCredit" class="hwParts">
+                <h2>Extra Credit: Elementary School Student Learn Multiplication</h2>
+                <div class="inner-wrapper">
+                    <input id="generateNumsButton" type="button" onclick="generateNumbers()" value="Generate 2 numbers">
+                    <div id="questionBox">
+                    </div>
+                    <div id="rightAnswer">
+                    </div>
+                    <div id="wrongAnswer">
+                    </div>
+            </div>
+        </div>
+                
+            
+            <script>
+let num1;
+let num2;
+let answer;
+let userAnswer;
+
+
+
+function clear() {
+  $("#rightAnswer").html("");
+  $("#wrongAnswer").html("");
+}
+
+
+
+function endScript() {
+  clear();
+  $("#generateNumsButton").show();
+  $("#questionBox").html("");
+}
+
+
+
+function generateNumbers() {
+  clear();
+  num1 = Math.floor(Math.random() * (10 - 0)) + 0;
+  num2 = Math.floor(Math.random() * (10 - 0)) + 0;
+  answer = num1 * num2;
+
+  $("#generateNumsButton").hide();
+  $("#questionBox").html(`How much is ${num1} times ${num2}? <br>`);
+  $("#questionBox").show().append(`<br>
+    <label for="userAnswer">Input your answer here: </label>
+    <input type="number" id="userAnswer" name="userAnswer" size="10" autofocus>
+    <input type="button" onclick="checkAnswer()" value="Check Answer">`);
+  $("#userAnswer").focus();
+}
+
+
+
+function checkAnswer() {
+  clear();
+  userAnswer = $("#userAnswer").val();
+  if (parseInt(userAnswer) == answer) {
+    $("#questionBox").hide();
+    $("#rightAnswer").append(`Very Good!<br>Wish to Continue?<br>
+                                <input type="button" onclick="generateNumbers()" value="Yes">
+                                <input type="button" onclick="endScript()" value="No">
+                              `);
+  } else {
+    $("#wrongAnswer").html(`No. Please try again!`);
+    $("#userAnswer").val('').focus();
+  }
+} 
+        </script>
+
+
+    </body>
+     
+      
+      
+</html>
+        
